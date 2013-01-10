@@ -4,9 +4,9 @@ SWFObject Tag is a [Liquid](http://www.liquidmarkup.org/) plugin for [Jekyll](ht
 
 ## Installation
 
-1. Copy `swfobject_tag.rb` (folder: _plugins) into `<your-jekyll-project>/_plugins` folder.
+1. Copy `_plugins/swfobject_tag.rb` into `<your-jekyll-project>/_plugins` folder.
 
-2. Link SWFObject at the layout template or page in `<head>` or before `{% swfobject %}` :
+2. Link SWFObject in your layout template or page within `<head>` or before `{% swfobject %}` :
 
     `<script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>`
 
@@ -19,7 +19,7 @@ Note: Because SWFObject Tag is a `Liquid::Block`, you have to close any `{% swfo
 
 #### Optional parameters
 
-    {% swfobject  swf_url, id: myFlash, content_id: flashcontent, width: 500, height: 600  %}{% endswfobject %}
+    {% swfobject  swf_url, id:myFlash, content_id:flashcontent, width:500, height:600  %}{% endswfobject %}
 
 For all optional parameters check section [Parameters](#params) below.
 
@@ -39,10 +39,10 @@ For all optional parameters check section [Parameters](#params) below.
       express_install_url: expressInstall.swf
       alternative_content: <p>Please install latest <a href='http://www.adobe.com/go/getflashplayer'>Flash Player Plugin</a>.</p>
 
-For all optional parameters check section [Parameters](#params) below.
+For all optional parameters check section [Parameters](#parameters) below.
 
 
-## Parameters ##  {#params}
+## Parameters
 
 ### Required parameter
 
@@ -52,8 +52,6 @@ For all optional parameters check section [Parameters](#params) below.
 
 All optional parameters can be defined within `{% swfobject %}` and / or using `_config.yml`.
 Parameters defined in `_config.yml` will be overridden by tag parameters.
-
-All the following parameters are optional.
 
 `content_id` - Id of the div container, which will be replaced by SWFObject to embed SWF
 
