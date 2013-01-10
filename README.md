@@ -21,7 +21,7 @@ Note: Because SWFObject Tag is a `Liquid::Block`, you have to close any `{% swfo
 
     {% swfobject  swf_url, id:myFlash, content_id:flashcontent, width:500, height:600  %}{% endswfobject %}
 
-For all optional parameters check section [Parameters](#params) below.
+For all optional parameters check section [Parameters](#parameters) below.
 
 
 #### Alternative HTML content
