@@ -5,7 +5,7 @@
 #
 #   {% swfobject swf_url %}{% endswfobject %}
 # or
-#   {% swfobject  swf_url, id: swfID, content_id: flashcontent, width: 500, height: 600  %}{% endswfobject %}
+#   {% swfobject  swf_url, id:swfID, content_id:flashcontent, width:500px, height:600px  %}{% endswfobject %}
 # or
 #   {% swfobject swf_url %}
 #   <p>Alternative HTML content, e.g. Latest <a href='http://www.adobe.com/go/getflashplayer'>Flash Player Plugin</a> is required.</p>
@@ -25,23 +25,21 @@ module Jekyll
   class SWFObjectTag < Liquid::Block
 
     ATTRIBUTES = [
-      'id', 'align', 'name', 'styleclass'
+        'id', 'align', 'name', 'styleclass'
     ]
 
     PARAMETERS = [
-      'play', 'loop', 'menu', 'quality', 'scale', 'salign', 'wmode', 'bgcolor', 'base',
-      'swliveconnect','devicefont','allowscriptaccess','seamlesstabbing','allowfullscreen', 'allownetworking'
+        'play', 'loop', 'menu', 'quality', 'scale', 'salign', 'wmode', 'bgcolor', 'base',
+        'swliveconnect','devicefont','allowscriptaccess','seamlesstabbing','allowfullscreen', 'allownetworking'
     ]
 
     DEFAULTS = {
-      "content_id" => "flashcontent",
-      "width" => "100%",
-      "height" => "100%",
-      "version" => "10.0",
-      "express_install_url" => "null",
-      "callback_function" => "null",
-      "flashvars" => "",
-      "alternative_content" => "<p>Please install latest <a href='http://www.adobe.com/go/getflashplayer'>Flash Player Plugin</a>.</p>"
+        "content_id" => "flashcontent",
+        "width" => "100%",
+        "height" => "100%",
+        "version" => "10.0",
+        "flashvars" => "",
+        "alternative_content" => "<p>Please install latest <a href='http://www.adobe.com/go/getflashplayer'>Flash Player Plugin</a>.</p>"
     }
 
     def initialize(tag_name, text, tokens)
@@ -81,9 +79,10 @@ module Jekyll
 
     def render(context)
       output = super
-      #<<-HTML
       <<-HTML.gsub /^\s+/, '' # remove whitespaces from heredocs
-      <div id="#{@config['content_id']}" style="#{render_content_style()}">#{render_alternative_content(output)}</div>
+      <div id="#{@config['content_id']}-wrapper" style="width: #{@config['width']}; height: #{@config['height']}">
+        <div id="#{@config['content_id']}" style="width: 100%; height:100%">#{render_alternative_content(output)}</div>
+      </div>
       <script type="text/javascript">
         //  <![CDATA[
         #{render_flashvars()}
@@ -92,36 +91,18 @@ module Jekyll
         swfobject.embedSWF(
           '#{@swf_url}',
           '#{@config['content_id']}',
-          '#{@config['height']}',
-          '#{@config['width']}',
+          '100%',
+          '100%',
           '#{@config['version']}',
-          '#{@config['express_install_url']}',
+          #{render_express_install_url()},
           flashvars,
           params,
           attributes,
-          '#{@config['callback_function']}'
+          #{render_callback_function()}
         );
         // ]]>
       </script>
       HTML
-    end
-
-    def render_content_style()
-      result = "width:"
-      width = @config['width']
-      if width.include? '%'
-        result += width+";"
-      else
-        result +=width+"px;"
-      end
-
-      result += "height:"
-      height = @config['height']
-      if height.include? '%'
-        result += height+";"
-      else
-        result +=height+"px;"
-      end
     end
 
     def render_alternative_content(output)
@@ -167,6 +148,14 @@ module Jekyll
         result = remove_last_comma(result)
       end
       result += "};"
+    end
+
+    def render_express_install_url()
+      @config['express_install_url'] ? "'#{@config['express_install_url']}'" : "null"
+    end
+
+    def render_callback_function()
+      @config['callback_function'] ? "#{@config['callback_function']}" : "null"
     end
 
     def remove_last_comma(content)
