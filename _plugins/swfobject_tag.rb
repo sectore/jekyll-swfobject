@@ -109,12 +109,19 @@ module Jekyll
     def render_content_style()
       result = "width:"
       width = @config['width']
-      width.include? '%' ? (result += width+";") : (result +=width+"px;")
+      if width.include? '%'
+        result += width+";"
+      else
+        result +=width+"px;"
+      end
 
       result += "height:"
       height = @config['height']
-      height.include? '%' ? (result += height+";") : (result +=height+"px;")
-      result += ";"
+      if height.include? '%'
+        result += height+";"
+      else
+        result +=height+"px;"
+      end
     end
 
     def render_alternative_content(output)
