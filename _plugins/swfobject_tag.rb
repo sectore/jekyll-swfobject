@@ -24,14 +24,14 @@ module Jekyll
 
   class SWFObjectTag < Liquid::Block
 
-    ATTRIBUTES = [
-        'id', 'align', 'name', 'styleclass'
-    ]
+    ATTRIBUTES = %w(
+      id align name styleclass
+    )
 
-    PARAMETERS = [
-        'play', 'loop', 'menu', 'quality', 'scale', 'salign', 'wmode', 'bgcolor', 'base',
-        'swliveconnect','devicefont','allowscriptaccess','seamlesstabbing','allowfullscreen', 'allownetworking'
-    ]
+    PARAMETERS = %w(
+      play loop menu quality scale salign wmode bgcolor base
+      swliveconnect devicefont allowscriptaccess seamlesstabbing allowfullscreen allownetworking
+    )
 
     DEFAULTS = {
         "content_id" => "flashcontent",
