@@ -150,11 +150,11 @@ module Jekyll
       result += "};"
     end
 
-    def render_express_install_url()
+    def render_express_install_url
       @config['express_install_url'] ? "'#{@config['express_install_url']}'" : "null"
     end
 
-    def render_callback_function()
+    def render_callback_function
       @config['callback_function'] ? "#{@config['callback_function']}" : "null"
     end
 
