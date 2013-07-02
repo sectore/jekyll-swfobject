@@ -113,29 +113,29 @@ module Jekyll
     end
 
     def render_params
-      result = "var params = {"
+      result = 'var params = {'
       @config.each do |key, value|
         if PARAMETERS.member? key
           result += " #{key}: '#{value}',"
         end
       end
       result = remove_last_comma(result)
-      result += "};"
+      result += '};'
     end
 
     def render_attributes
-      result = "var attributes = {"
+      result = 'var attributes = {'
       @config.each do |key, value|
         if ATTRIBUTES.member? key
           result += " #{key}: '#{value}',"
         end
       end
       result = remove_last_comma(result)
-      result += "};"
+      result += '};'
     end
 
     def render_flashvars
-      result = "var flashvars = {"
+      result = 'var flashvars = {'
 
       if !@config['flashvars'].nil?
         vars = @config['flashvars'].split('&')
@@ -147,15 +147,15 @@ module Jekyll
         end
         result = remove_last_comma(result)
       end
-      result += "};"
+      result += '};'
     end
 
     def render_express_install_url
-      @config['express_install_url'] ? "'#{@config['express_install_url']}'" : "null"
+      @config['express_install_url'] ? "'#{@config['express_install_url']}'" : 'null'
     end
 
     def render_callback_function
-      @config['callback_function'] ? "#{@config['callback_function']}" : "null"
+      @config['callback_function'] ? "#{@config['callback_function']}" : 'null'
     end
 
     def remove_last_comma(content)
