@@ -21,7 +21,7 @@ Note: Because SWFObject Tag is a `Liquid::Block`, you have to close any `{% swfo
 
 All optional parameters are defined using `key:value` pairs.
 
-    {% swfobject  swf_url, id:myFlash, content_id:flashcontent, width:500, height:600  %}{% endswfobject %}
+    {% swfobject swf_url id:myFlash content_id:flashcontent width:500 height:600  %}{% endswfobject %}
 
 Note: Don't use whitespaces between `:` to avoid issues rendering templates.
 
