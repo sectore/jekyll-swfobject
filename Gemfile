@@ -1,10 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'jekyll'
-
-group :development, :test do
-  gem 'rake'
-  gem 'shoulda'
-  gem 'shoulda-context'
-  gem 'mocha', :require => false
-end
+# Specify your gem's dependencies in jekyll-swfobject.gemspec
+gemspec
