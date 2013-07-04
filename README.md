@@ -4,7 +4,7 @@ SWFObject Tag is a [Liquid](http://www.liquidmarkup.org/) plugin for [Jekyll](ht
 
 ## Installation
 
-1 Add this line to your application's Gemfile:
+1) Add this line to your application's Gemfile:
 
     gem 'jekyll-swfobject'
 
@@ -16,8 +16,12 @@ Or install it yourself as:
 
     $ gem install jekyll-swfobject
 
+2) Add in a plugin file within your Jekyll project's _plugins directory:
 
-2. Link SWFObject in your layout template or page within `<head>` or before `{% swfobject %}` :
+    # _plugins/my-plugin.rb
+    require 'jekyll-swfobject'
+
+3) Link SWFObject in your layout template or page within `<head>` or before `{% swfobject %}` :
 
     `<script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>`
 
@@ -54,7 +58,7 @@ For all optional parameters check section [Parameters](#parameters) below.
       express_install_url: expressInstall.swf
       alternative_content: <p>Please install latest <a href='http://www.adobe.com/go/getflashplayer'>Flash Player Plugin</a>.</p>
 
-For all optional parameters check section [Parameters](#parameters) below.
+You can define any optional paramter in `_config.yml`. For an overiew of all optional parameters check section [Parameters](#parameters) below.
 
 
 ## Parameters
