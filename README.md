@@ -4,14 +4,25 @@ SWFObject Tag is a [Liquid](http://www.liquidmarkup.org/) plugin for [Jekyll](ht
 
 ## Installation
 
-1. Copy `_plugins/swfobject_tag.rb` into `<your-jekyll-project>/_plugins` folder.
+1 Add this line to your application's Gemfile:
+
+    gem 'jekyll-swfobject'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install jekyll-swfobject
+
 
 2. Link SWFObject in your layout template or page within `<head>` or before `{% swfobject %}` :
 
     `<script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>`
 
 
-## Example
+## Usage
 
 ### Tag
     {% swfobject swf_url %}{% endswfobject %}
@@ -126,13 +137,24 @@ For detailed information check SWF Object documentation: http://code.google.com/
 
 SWFObject Tag is used by the Jekyll generated website [WEBSECTOR.DE](http://websector.de). You will find the [source](https://github.com/sectore/websector.de) of WEBSECTOR.DE [here](https://github.com/sectore/websector.de) at GitHub.
 
+## Test
+
+The plugin is well tested using [Test::Unit](http://www.ruby-doc.org/core/classes/Test/Unit.html) with [Shoulda](https://github.com/thoughtbot/shoulda) and [Mocha](http://gofreerange.com/mocha/). To start tests just run
+
+    rake test
+
+
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
 ## License
 
 Copyright (c) 2013 "sectore" Jens Krause // [WEBSECTOR.DE](http://websector.de)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+SWFObject Tag is free software and it may be redistributed under the terms specified in the MIT-LICENSE file.

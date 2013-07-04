@@ -1,7 +1,7 @@
 require 'test/unit'
 require 'test/unit/assertions'
 require 'jekyll'
-require_relative '../_plugins/swfobject_tag'
+require_relative '../lib/jekyll-swfobject'
 
 # Test assertion helper to check template result
 # It is grabed from Shopify's test helper
@@ -23,15 +23,15 @@ module MockData
   # default test data
   def getDefaultData
     data = {
-      :content_id => Jekyll::SWFObjectTag.DEFAULTS[:content_id],
-      :width => Jekyll::SWFObjectTag.DEFAULTS[:width],
-      :height => Jekyll::SWFObjectTag.DEFAULTS[:height],
-      :alternative_content => Jekyll::SWFObjectTag.DEFAULTS[:alternative_content],
+      :content_id => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:content_id],
+      :width => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:width],
+      :height => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:height],
+      :alternative_content => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:alternative_content],
       :flashvars => 'var flashvars = {};',
       :params => 'var params = {};',
       :attributes => 'var attributes = {};',
       :swf_url => 'url/of/any.swf',
-      :version => Jekyll::SWFObjectTag.DEFAULTS[:version],
+      :version => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:version],
       :express_install_url => 'null',
       :callback_function => 'null'
     }
