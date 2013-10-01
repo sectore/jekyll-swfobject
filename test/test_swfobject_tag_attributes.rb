@@ -16,35 +16,35 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
   context 'template with attributes' do
     should 'uses default values' do
       expected = expected_output_by_test_data()
-      template = "{% swfobject #{@test_data[:swf_url]} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
     should 'render a custom swf url' do
       swf_url = 'another/path/to.swf'
       expected = expected_output_by_test_data({:swf_url => swf_url})
-      template = "{% swfobject #{swf_url} %}{% endswfobject %}"
+      template = "{% swfobject #{swf_url} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
     should 'render a custom content_id' do
       content_id = 'halli-galli-id'
       expected = expected_output_by_test_data({:content_id => content_id})
-      template = "{% swfobject #{@test_data[:swf_url]} content_id:#{content_id} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} content_id:#{content_id} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
     should 'render a custom width' do
       width = '23px'
       expected = expected_output_by_test_data({:width => width})
-      template = "{% swfobject #{@test_data[:swf_url]} width:#{width} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} width:#{width} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
     should 'render a custom height' do
       height = '44px'
       expected = expected_output_by_test_data({:height => height})
-      template = "{% swfobject #{@test_data[:swf_url]} height:#{height} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} height:#{height} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -58,7 +58,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
     should 'render a custom flash version' do
       version = '11.4'
       expected = expected_output_by_test_data({:version => version})
-      template = "{% swfobject #{@test_data[:swf_url]} version:#{version}%}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} version:#{version}%}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -67,7 +67,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       valueA = 'valueA'
       flashVars = "var flashvars = {#{varA}:'#{valueA}'};"
       expected = expected_output_by_test_data({:flashvars => flashVars})
-      template = "{% swfobject #{@test_data[:swf_url]} flashvars:#{varA}=#{valueA}%}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} flashvars:#{varA}=#{valueA}%}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -78,7 +78,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       valueB = 'valueB'
       flashVars = "var flashvars = {#{varA}:'#{valueA}',#{varB}:'#{valueB}'};"
       expected = expected_output_by_test_data({:flashvars => flashVars})
-      template = "{% swfobject #{@test_data[:swf_url]} flashvars:#{varA}=#{valueA}&#{varB}=#{valueB}%}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} flashvars:#{varA}=#{valueA}&#{varB}=#{valueB}%}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -87,7 +87,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'any-id'
       attributes = "var attributes = {#{attribute}:'#{value}'};"
       expected = expected_output_by_test_data({:attributes => attributes})
-      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -96,7 +96,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'l'
       attributes = "var attributes = {#{attribute}:'#{value}'};"
       expected = expected_output_by_test_data({:attributes => attributes})
-      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -105,7 +105,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'any-name'
       attributes = "var attributes = {#{attribute}:'#{value}'};"
       expected = expected_output_by_test_data({:attributes => attributes})
-      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -114,7 +114,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'any-class'
       attributes = "var attributes = {#{attribute}:'#{value}'};"
       expected = expected_output_by_test_data({:attributes => attributes})
-      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -125,7 +125,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value_align = 'center'
       attributes = "var attributes = {#{attribute_id}:'#{value_id}',#{attribute_align}:'#{value_align}'};"
       expected = expected_output_by_test_data({:attributes => attributes})
-      template = "{% swfobject #{@test_data[:swf_url]} #{attribute_id}:#{value_id} #{attribute_align}:#{value_align} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{attribute_id}:#{value_id} #{attribute_align}:#{value_align} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -134,7 +134,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'true'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -143,7 +143,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'false'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -152,7 +152,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'false'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -161,7 +161,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'best'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -170,7 +170,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'exactfit'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -179,7 +179,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'tr'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -188,7 +188,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'window'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -197,7 +197,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = '#FFF'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -206,7 +206,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'http://any-base-url.com'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -215,7 +215,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'true'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -224,7 +224,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'false'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -233,7 +233,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'sameDomain'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -242,7 +242,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'false'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -251,7 +251,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'true'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -260,7 +260,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       value = 'none'
       rendered_params = "var params = {#{param}:'#{value}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -271,7 +271,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       valueB = 'false'
       rendered_params = "var params = {#{attributeA}:'#{valueA}',#{attributeB}:'#{valueB}'};"
       expected = expected_output_by_test_data({:params => rendered_params})
-      template = "{% swfobject #{@test_data[:swf_url]} #{attributeA}:#{valueA} #{attributeB}:#{valueB} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{attributeA}:#{valueA} #{attributeB}:#{valueB} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -283,7 +283,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
   context 'template with attributes defined in Jekylls configuration (_config.yml)' do
     should 'uses default values' do
       expected = expected_output_by_test_data()
-      template = "{% swfobject #{@test_data[:swf_url]} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -294,7 +294,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{swf_url} %}{% endswfobject %}"
+      template = "{% swfobject #{swf_url} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -305,7 +305,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} content_id:#{content_id} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} content_id:#{content_id} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -316,7 +316,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} width:#{width} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} width:#{width} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -327,7 +327,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} height:#{height} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} height:#{height} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -338,7 +338,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} %}#{alternative_content}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -349,7 +349,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} version:#{version}%}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} version:#{version}%}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -362,7 +362,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} flashvars:#{varA}=#{valueA}%}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} flashvars:#{varA}=#{valueA}%}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -377,7 +377,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} flashvars:#{varA}=#{valueA}&#{varB}=#{valueB}%}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} flashvars:#{varA}=#{valueA}&#{varB}=#{valueB}%}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -390,7 +390,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -403,7 +403,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -416,7 +416,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -429,7 +429,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -444,7 +444,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{attribute_id}:#{value_id} #{attribute_align}:#{value_align} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{attribute_id}:#{value_id} #{attribute_align}:#{value_align} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -457,7 +457,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -470,7 +470,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -483,7 +483,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -496,7 +496,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -509,7 +509,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -522,7 +522,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -535,7 +535,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -548,7 +548,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -561,7 +561,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -574,7 +574,7 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
@@ -587,14 +587,14 @@ class TestSWFObjectTagAttributes < Test::Unit::TestCase
       }
       Jekyll.stubs(:configuration).returns({'swfobject' => @custom_config})
       expected = expected_output_by_test_data(@custom_config)
-      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{param}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       assert_template_result expected, template
     end
 
     should 'NOT render a value, which are not supported' do
       attribute = 'halligalli'
       value = 'true'
-      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}{% endswfobject %}"
+      template = "{% swfobject #{@test_data[:swf_url]} #{attribute}:#{value} %}#{@test_data[:alternative_content]}{% endswfobject %}"
       rendered = Template.parse(template).render({})
       assert(!rendered.include?(attribute))
     end

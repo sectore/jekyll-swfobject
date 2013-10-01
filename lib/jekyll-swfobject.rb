@@ -35,19 +35,18 @@ module Jekyll
       )
 
       @@DEFAULTS = {
-        :content_id => 'flashcontent',
-        :width => '100%',
-        :height => '100%',
-        :version => '10.0',
-        :flashvars => '',
-        :alternative_content => "<p>Please install latest <a href='http://www.adobe.com/go/getflashplayer'>Flash Player Plugin</a>.</p>"
+          :content_id => 'flashcontent',
+          :width => '100%',
+          :height => '100%',
+          :version => '10.0',
+          :flashvars => ''
       }
 
       def self.DEFAULTS
         return @@DEFAULTS
       end
 
-      def initialize(tag_name, text, tokens)
+      def initialize(tag_name, markup, tokens)
         super
 
         @config = {}
@@ -60,7 +59,7 @@ module Jekyll
           override_config(config)
         end
 
-        params = text.split
+        params = markup.split
 
         # first argument (required) is url of swf
         @swf_url = params.shift.strip
@@ -83,17 +82,22 @@ module Jekyll
       end
 
       def render(context)
-        output = super
+        content = super
+
+        # raise an error if the swfobject block has no content
+        if content.strip.size <= 0
+          raise ScriptError.new("swfobject tag can not be empty")
+        end
 
         <<-HTML.gsub /^\s+/, '' # remove whitespaces from heredocs
         <div id="#{@config[:content_id]}-wrapper" style="width: #{@config[:width]}; height: #{@config[:height]}">
-          <div id="#{@config[:content_id]}" style="width: 100%; height:100%">#{render_alternative_content(output)}</div>
+          <div id="#{@config[:content_id]}" style="width: 100%; height:100%">#{content}</div>
         </div>
         <script type="text/javascript">
           //  <![CDATA[
           #{render_flashvars()}
-          #{render_params()}
-          #{render_attributes()}
+        #{render_params()}
+        #{render_attributes()}
           swfobject.embedSWF(
             '#{@swf_url}',
             '#{@config[:content_id]}',
@@ -109,13 +113,6 @@ module Jekyll
           // ]]>
         </script>
         HTML
-      end
-
-      def render_alternative_content(output)
-        unless output.strip.size > 0
-          output = @config[:alternative_content]
-        end
-        output
       end
 
       def render_params

@@ -1,6 +1,7 @@
 require 'test/unit'
 require 'test/unit/assertions'
 require 'jekyll'
+require 'liquid.rb'
 require_relative '../lib/jekyll-swfobject'
 
 # Test assertion helper to check template result
@@ -26,7 +27,7 @@ module MockData
       :content_id => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:content_id],
       :width => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:width],
       :height => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:height],
-      :alternative_content => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:alternative_content],
+      :alternative_content => "Flash Player required.",
       :flashvars => 'var flashvars = {};',
       :params => 'var params = {};',
       :attributes => 'var attributes = {};',
