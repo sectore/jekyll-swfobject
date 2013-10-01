@@ -29,8 +29,16 @@ Or install it yourself as:
 ## Usage
 
 ### Tag
-    {% swfobject swf_url %}{% endswfobject %}
+    {% swfobject swf_url %}Flash Player required.{% endswfobject %}
 Note: Because SWFObject Tag is a `Liquid::Block`, you have to close any `{% swfobject %}` with `{% endswfobject %}` in your templates.
+Also an alternative content within the tags is needed.
+
+#### Alternative HTML content (required)
+
+    {% swfobject swf_url %}
+    <p>Latest <a href='http://www.adobe.com/go/getflashplayer'>Flash Player Plugin</a> is required.</p>
+    {% endswfobject %}
+
 
 #### Optional parameters
 
@@ -43,20 +51,13 @@ Note: Don't use whitespaces between `:` to avoid issues rendering templates.
 For all optional parameters check section [Parameters](#parameters) below.
 
 
-#### Alternative HTML content
-
-    {% swfobject swf_url %}
-    <p>Latest <a href='http://www.adobe.com/go/getflashplayer'>Flash Player Plugin</a> is required.</p>
-    {% endswfobject %}
 
 #### Optional parameters defined in `_config.yml`
-
 
     swfobject:
       height: 350
       width: 200
       express_install_url: expressInstall.swf
-      alternative_content: <p>Please install latest <a href='http://www.adobe.com/go/getflashplayer'>Flash Player Plugin</a>.</p>
 
 You can define any optional paramter in `_config.yml`. For an overiew of all optional parameters check section [Parameters](#parameters) below.
 
