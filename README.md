@@ -163,3 +163,6 @@ The plugin is well tested using [Test::Unit](http://www.ruby-doc.org/core/classe
 Copyright (c) 2013 "sectore" Jens Krause // [WEBSECTOR.DE](http://websector.de)
 
 SWFObject Tag is free software and it may be redistributed under the terms specified in the MIT-LICENSE file.
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/sectore/jekyll-swfobject/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
