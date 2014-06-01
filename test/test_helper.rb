@@ -1,20 +1,17 @@
-require 'test/unit'
-require 'test/unit/assertions'
+require 'minitest/test'
+require 'minitest/assertions'
 require 'jekyll'
 require 'liquid.rb'
 require_relative '../lib/jekyll-swfobject'
 
 # Test assertion helper to check template result
-# It is grabed from Shopify's test helper
+# Based on Shopify's test helper
 # @see: https://github.com/Shopify/liquid/blob/master/test/test_helper.rb
-module Test
-  module Unit
-    module Assertions
-      include Liquid
-
-      def assert_template_result(expected, template, assigns = {}, message = nil)
-        assert_equal expected, Template.parse(template).render(assigns)
-      end
+module MiniTest
+  module Assertions
+    def assert_template_result(expected, template, assigns = {}, message = nil)
+      result = Liquid::Template.parse(template).render(assigns)
+      assert_equal expected, result
     end
   end
 end
@@ -24,17 +21,17 @@ module MockData
   # default test data
   def getDefaultData
     data = {
-      :content_id => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:content_id],
-      :width => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:width],
-      :height => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:height],
-      :alternative_content => "Flash Player required.",
-      :flashvars => 'var flashvars = {};',
-      :params => 'var params = {};',
-      :attributes => 'var attributes = {};',
-      :swf_url => 'url/of/any.swf',
-      :version => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:version],
-      :express_install_url => 'null',
-      :callback_function => 'null'
+        :content_id => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:content_id],
+        :width => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:width],
+        :height => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:height],
+        :alternative_content => "Flash Player required.",
+        :flashvars => 'var flashvars = {};',
+        :params => 'var params = {};',
+        :attributes => 'var attributes = {};',
+        :swf_url => 'url/of/any.swf',
+        :version => Jekyll::SWFObject::SWFObjectTag.DEFAULTS[:version],
+        :express_install_url => 'null',
+        :callback_function => 'null'
     }
   end
 

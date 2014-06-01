@@ -1,24 +1,26 @@
 require 'shoulda'
-require 'mocha/setup'
+require 'minitest/test'
+require 'mocha/mini_test'
 require_relative './test_helper'
 
-class TestSWFObjectTagConfig < Test::Unit::TestCase
+class TestSWFObjectTagConfig < Minitest::Test
 
-  include MockData
-  include Liquid
-
-  def setup
-    @test_data = getDefaultData().clone
-  end
-
-  def teardown
-    Jekyll.unstub(:configuration)
-  end
 
   # tests of attributes defined _config.yml
   # ---------------------------------------------
 
-  context 'template with attributes defined in Jekylls configuration (_config.yml)' do
+  describe 'template with attributes defined in Jekylls configuration (_config.yml)' do
+
+    include MockData
+
+    before do
+      @test_data = getDefaultData().clone
+    end
+
+    after do
+      Jekyll.unstub(:configuration)
+    end
+
     should 'uses default values' do
       expected = expected_output_by_test_data()
       template = "{% swfobject #{@test_data[:swf_url]} %}#{@test_data[:alternative_content]}{% endswfobject %}"
@@ -494,7 +496,7 @@ class TestSWFObjectTagConfig < Test::Unit::TestCase
         }
       })
       template = "{% swfobject #{@test_data[:swf_url]} %}#{@test_data[:alternative_content]}{% endswfobject %}"
-      rendered = Template.parse(template).render({})
+      rendered = Liquid::Template.parse(template).render({})
       assert(!rendered.include?(attribute))
     end
 

@@ -1,24 +1,28 @@
-require 'test/unit'
 require 'shoulda'
+require 'minitest/test'
 require_relative './test_helper'
 
-class TestSWFObjectTagContent < Test::Unit::TestCase
-
-  include MockData
-  include Liquid
-
-  def setup
-    @test_data = getDefaultData().clone
-  end
+class TestSWFObjectTagContent < Minitest::Test
 
   # tests of attributes defined in template
   # ---------------------------------------------
 
-  context 'content of template' do
+  describe 'content of template' do
+
+
+    include MockData
+
+    before do
+      @test_data = getDefaultData().clone
+    end
+    before do
+      @test_data = getDefaultData().clone
+    end
+
     should 'raises an error if its content is empty' do
       template = "{% swfobject #{@test_data[:swf_url]} %}{% endswfobject %}"
       assert_raises(ScriptError) do
-        p = Template.parse(template).render()
+        p = Liquid::Template.parse(template).render()
       end
 
     end
